@@ -28,7 +28,13 @@ const ClassesList = () => {
                 accessorKey: 'bannerUrl',
                 size: 200,
                 header: () => <p className="column-title">Banner</p>,
-                cell: ({ getValue }) => <span className="text-foreground"><img src={getValue<string>()}></img></span>,
+                cell: ({ getValue }) => <div className="flex items-center justify-center ml-2">
+                    <img
+                        src={getValue<string>() || '/placeholder-class.png'}
+                        alt="Class Banner"
+                        className="w-10 h-10 rounded object-cover"
+                    />
+                </div>,
                 filterFn: 'includesString'
             },
             {
