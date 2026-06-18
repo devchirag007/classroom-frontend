@@ -1,5 +1,6 @@
 import { BACKEND_BASE_URL } from "@/constants"
 import { CreateResponse, ListResponse } from "@/types"
+import { GetOneResponse } from "@refinedev/core"
 import { createDataProvider, CreateDataProviderOptions } from "@refinedev/rest"
 
 if (!BACKEND_BASE_URL) {
@@ -40,7 +41,6 @@ const options: CreateDataProviderOptions = {
       return payload.pagination?.total ?? payload.data?.length ?? 0
     }
   },
-
   create: {
     getEndpoint: ({ resource }) => resource,
 
@@ -48,6 +48,13 @@ const options: CreateDataProviderOptions = {
 
     mapResponse: async (response) => {
       const json: CreateResponse = await response.json()
+      return json.data ?? []
+    }
+  },
+  getOne: {
+    getEndpoint: ({ resource, id }) => `${resource}/${id}`,
+    mapResponse: async (response) => {
+      const json: GetOneResponse = await response.json()
       return json.data ?? []
     }
   }
