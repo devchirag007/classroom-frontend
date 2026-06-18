@@ -48,7 +48,7 @@ const ClassesList = () => {
             {
                 id: 'status',
                 accessorKey: 'status',
-                size: 300,
+                size: 150,
                 header: () => <p className="column-title">Status</p>,
                 cell: ({ getValue }) => <span className="truncate line-clamp-2"><Badge>{getValue<string>()}</Badge></span>,
             },
@@ -69,15 +69,8 @@ const ClassesList = () => {
             {
                 id: 'teacher',
                 accessorKey: 'teacher',
-                size: 300,
+                size: 150,
                 header: () => <p className="column-title">Teacher</p>,
-                cell: ({ getValue }) => <span className="truncate line-clamp-2">{getValue<string>()}</span>,
-            },
-            {
-                id: 'capacity',
-                accessorKey: 'capacity',
-                size: 300,
-                header: () => <p className="column-title">Capacity</p>,
                 cell: ({ getValue }) => <span className="truncate line-clamp-2">{getValue<string>()}</span>,
             },
             {
